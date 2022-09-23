@@ -12,6 +12,11 @@ console.log({ CATEGORIES, TASKS });
 function App() {
   const [Tasks, setTasks] = useState(TASKS);
 
+  function handleDeleteButton(deleteButtonEvent, id) {
+    deleteButtonEvent.preventDefault();
+    let newTaskListDeletedElement = Tasks.filter((task, index) => index !== id);
+  setTasks(newTaskListDeletedElement);
+  }
 
   return (
     <div className="App">
@@ -20,7 +25,8 @@ function App() {
       <NewTaskForm />
       <TaskList 
       Tasks = {Tasks}
-      setTasks = {setTasks}/>
+      setTasks = {setTasks}
+      handleDeleteButton = {handleDeleteButton}/>
     </div>
   );
 }

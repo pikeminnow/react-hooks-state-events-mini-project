@@ -1,16 +1,7 @@
 import React from "react";
 import Task from "./Task";
 
-function TaskList({Tasks, id, setTasks}) {
-
-function handleDeleteButton(deleteButtonEvent, id) {
-  deleteButtonEvent.preventDefault();
-console.log(deleteButtonEvent);
-console.log(id);
-let newTaskListDeletedElement = Tasks.filter((task, index) => index !== id);
-setTasks(newTaskListDeletedElement);
-
-}
+function TaskList({Tasks, id, setTasks, handleDeleteButton}) {
 
 function displayTasks (tasks) {
   let newTaskList = tasks.map((task, index)=> {
