@@ -1,6 +1,6 @@
 import React from "react";
 
-function Task({task, id, handleDeleteButton}) {
+function Task({task, handleDeleteButton}) {
   return (
     <div className="task">
       <div className="label">{task.category}</div>
