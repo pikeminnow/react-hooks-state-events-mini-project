@@ -1,10 +1,15 @@
 import React from "react";
+import Task from "./Task";
 
 function TaskList({TASKS}) {
 
 function displayTasks (tasks) {
-  let newTaskList = tasks.map((task, index)=> {
-    return (<p key={index}> <span> {task.text} </span> <span> {task.category}</span></p>)
+  let newTaskList = tasks.map((task)=> {
+    return <Task 
+    task = {task}
+    key = {task.text}
+     />;
+    // return (<p key={index}> <span> {task.text} </span> <span> {task.category}</span></p>)
   })
   return newTaskList;
 }
