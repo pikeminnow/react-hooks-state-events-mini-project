@@ -12,9 +12,9 @@ console.log({ CATEGORIES, TASKS });
 function App() {
   const [Tasks, setTasks] = useState(TASKS);
 
-  function handleDeleteButton(deleteButtonEvent, id) {
+  function handleDeleteButton(deleteButtonEvent, taskText) {
     deleteButtonEvent.preventDefault();
-    let newTaskListDeletedElement = Tasks.filter((task, index) => index !== id);
+    let newTaskListDeletedElement = Tasks.filter((task) => task.text !== taskText);
   setTasks(newTaskListDeletedElement);
   }
 
