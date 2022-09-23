@@ -1,15 +1,25 @@
 import React from "react";
 import Task from "./Task";
 
-function TaskList({TASKS}) {
+function TaskList({Tasks, id, setTasks}) {
+
+function handleDeleteButton(deleteButtonEvent, id) {
+  deleteButtonEvent.preventDefault();
+console.log(deleteButtonEvent);
+console.log(id);
+let newTaskListDeletedElement = Tasks.filter((task, index) => index !== id);
+setTasks(newTaskListDeletedElement);
+
+}
 
 function displayTasks (tasks) {
-  let newTaskList = tasks.map((task)=> {
+  let newTaskList = tasks.map((task, index)=> {
     return <Task 
     task = {task}
     key = {task.text}
+    id = {index}
+    handleDeleteButton = {handleDeleteButton}
      />;
-    // return (<p key={index}> <span> {task.text} </span> <span> {task.category}</span></p>)
   })
   return newTaskList;
 }
@@ -18,7 +28,7 @@ function displayTasks (tasks) {
   return (
     <div className="tasks">
       {/* display a list of tasks using Task component */}
-      {displayTasks(TASKS)}
+      {displayTasks(Tasks)}
     </div>
   );
 }
