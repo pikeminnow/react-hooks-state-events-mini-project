@@ -1,33 +1,75 @@
+import { useState } from "react";
 import React from "react";
 
 // Pass the list of categories to this component from App. 
 
 
 function CategoryFilter({ categories }) {
+  // When a button is clicked, the following should happen:
 
+  // Whichever button was clicked should have a class of selected. The other buttons should not have any class assigned.
+  const [buttonDeck, setButtonDeck] = useState({ categories });
+  const [clickedButton, setClickedButton] = useState("");
 
   function handleCategoryButton(categoryButtonEvent) {
 
-    // When a button is clicked, the following should happen:
+    console.log("handleCategoryButton");
+    console.log(categoryButtonEvent);
+    console.log(categoryButtonEvent.target.innerText);
+    console.log(buttonDeck);
 
-    // Whichever button was clicked should have a class of selected. The other buttons should not have any class assigned.
+    categoryButtonEvent.target.classList.toggle("selected");
+
+    let buttonClickedValue = categoryButtonEvent.target.innerText;
+
+    // let buttonsNotClicked = buttonDeck.categories.filter((button, buttonClickedValue) => !button.includes(buttonClickedValue));
+
+    setClickedButton(buttonClickedValue);
     // The list of tasks being displayed should be filtered, so that only tasks that match the category that was clicked are displayed.
     // If the button for "All" is selected, all the tasks should be displayed.
-
-
-    console.log("handleCategoryButton");
-    return true;
 
   }
 
 
 
-  function displayCategoryButtons(displayCategories) {
+  function displayCategoryButtons(displayCategories, clickedValue) {
+    // const ifClickedClass = clickedValue ? "selected" : "";
+
     //sometimes things are just there
-    return (displayCategories.map((category) => {
-      return (<button key={category} onClick={handleCategoryButton}>{category}</button>);
+    let theButtons = (displayCategories.categories.map((category) => {
+      console.log({ clickedValue, category });
+      console.log(clickedValue === category);
+      let buttonToDisplay = (<button
+        key={category}
+        name={category}
+        onClick={(categoryButtonEvent) => handleCategoryButton(categoryButtonEvent)}> {category} </button>)
+      return buttonToDisplay;
+      // if (clickedValue === category) { buttonToDisplay.classList.toggle("selected"); }
+
+      // let classListBehavior = (clickedValue === category) ? buttonToDisplay.classList(add("selected")) : 
+
+      // if (clickedValue === category) {
+      //   return (<button
+      //     key={category}
+      //     name={category}
+      //     className="selected"
+      //     onClick={(categoryButtonEvent) => handleCategoryButton(categoryButtonEvent)}
+      //   >{category}</button>);
+      // }
+      // else {
+      //   return (
+      //     <button
+      //       key={category}
+      //       name={category}
+      //       onClick={(categoryButtonEvent) => handleCategoryButton(categoryButtonEvent)}
+      //     >{category}</button>
+      //   );
+      // }
     })
     );
+
+
+    return theButtons;
   }
 
 
@@ -38,8 +80,9 @@ function CategoryFilter({ categories }) {
       {/* render <button> elements for each category here 
       Then, update this component to display <button> elements for each category. In order to pass the test, the buttons will need a key prop equal to the category.
       */}
+      {console.log(buttonDeck)}
+      {displayCategoryButtons(buttonDeck, clickedButton)}
 
-      {displayCategoryButtons(categories)}
 
     </div>
   );
