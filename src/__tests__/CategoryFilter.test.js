@@ -19,9 +19,6 @@ test("clicking the category button adds a class of 'selected' to the button", ()
 
   fireEvent.click(codeButton);
 
-  console.log(codeButton.classList);
-  console.log(allButton.classList);
-
   expect(codeButton.classList).toContain("selected");
   expect(allButton.classList).not.toContain("selected");
 });

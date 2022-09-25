@@ -15,19 +15,18 @@ function App() {
   function handleDeleteButton(deleteButtonEvent, taskText) {
     deleteButtonEvent.preventDefault();
     let newTaskListDeletedElement = Tasks.filter((task) => task.text !== taskText);
-    setTasks(newTaskListDeletedElement);
+  setTasks(newTaskListDeletedElement);
   }
 
   return (
     <div className="App">
       <h2>My tasks</h2>
-      <CategoryFilter
-        categories={CATEGORIES} />
+      <CategoryFilter />
       <NewTaskForm />
-      <TaskList
-        Tasks={Tasks}
-        setTasks={setTasks}
-        handleDeleteButton={handleDeleteButton} />
+      <TaskList 
+      Tasks = {Tasks}
+      setTasks = {setTasks}
+      handleDeleteButton = {handleDeleteButton}/>
     </div>
   );
 }
