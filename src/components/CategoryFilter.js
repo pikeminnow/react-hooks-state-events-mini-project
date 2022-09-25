@@ -1,6 +1,7 @@
 import { useState } from "react";
 import React from "react";
 
+<<<<<<< HEAD
 // Pass the list of categories to this component from App. 
 
 
@@ -85,11 +86,21 @@ function CategoryFilter({ categories }) {
       {displayCategoryButtons(buttonDeck, clickedButton)}
 
 
+=======
+function CategoryFilter() {
+  return (
+    <div className="categories">
+      <h5>Category filters</h5>
+      {/* render <button> elements for each category here */}
+>>>>>>> parent of 1468eb7 (displays buttons)
     </div>
   );
 }
 
 export default CategoryFilter;
+<<<<<<< HEAD
 
 
 
+=======
+>>>>>>> parent of 1468eb7 (displays buttons)
