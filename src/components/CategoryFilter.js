@@ -25,11 +25,6 @@ function CategoryFilter({ categories }) {
 
   function handleCategoryButton(categoryButtonEvent) {
 
-    console.log("handleCategoryButton");
-    console.log(categoryButtonEvent);
-    console.log(categoryButtonEvent.target.innerText);
-    console.log(buttonDeck);
-
     let buttonClickedValue = categoryButtonEvent.target.innerText;
 
     setClickedButton(buttonClickedValue);
