@@ -14,6 +14,7 @@ function DisplayCategoryButtons({ displayCategories, clickedButton, handleCatego
       onClick={(categoryButtonEvent) => handleCategoryButton(categoryButtonEvent)}
     >{category}</button>);
     console.log(thisButton);
+
     return thisButton;
   })
   );
