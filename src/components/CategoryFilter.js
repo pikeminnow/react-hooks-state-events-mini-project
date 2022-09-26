@@ -1,27 +1,6 @@
 import { useState } from "react";
 import React from "react";
 
-
-
-
-
-function DisplayCategoryButtons({ displayCategories, clickedButton, handleCategoryButton }) {
-
-  let theButtons = (displayCategories.map((category) => {
-    let thisButton = (<button
-      key={category}
-      name={category}
-      className={(category === clickedButton) ? "selected" : ""}
-      onClick={(categoryButtonEvent) => handleCategoryButton(categoryButtonEvent)}
-    >{category}</button>);
-    console.log(thisButton);
-
-    return thisButton;
-  })
-  );
-  return theButtons;
-}
-
 function DisplayCategoryButton({ category, handleCategoryButton, extraProps }) {
   console.log(handleCategoryButton)
   let thisButton = (<button key={category}
@@ -53,8 +32,6 @@ function CategoryFilter({ categories }) {
 
     let buttonClickedValue = categoryButtonEvent.target.innerText;
 
-    // let buttonsNotClicked = buttonDeck.categories.filter((button, buttonClickedValue) => !button.includes(buttonClickedValue));
-
     setClickedButton(buttonClickedValue);
     // The list of tasks being displayed should be filtered, so that only tasks that match the category that was clicked are displayed.
     // If the button for "All" is selected, all the tasks should be displayed.
@@ -68,10 +45,6 @@ function CategoryFilter({ categories }) {
       Then, update this component to display <button> elements for each category. In order to pass the test, the buttons will need a key prop equal to the category.
       */}
       {console.log(buttonDeck)}
-      {/* <DisplayCategoryButtons
-        displayCategories={categories}
-        clickedButton={clickedButton}
-        handleCategoryButton={handleCategoryButton} /> */}
 
       {categories.map(category => {
         const extraProps = clickedButton === category
