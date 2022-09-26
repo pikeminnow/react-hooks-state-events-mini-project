@@ -48,6 +48,7 @@ function CategoryFilter({ categories }) {
     let buttonClickedValue = categoryButtonEvent.target.innerText;
 
     // let buttonsNotClicked = buttonDeck.categories.filter((button, buttonClickedValue) => !button.includes(buttonClickedValue));
+    let buttonsNotClicked = buttonDeck.categories.filter((button, buttonClickedValue) => !button.includes(buttonClickedValue));
 
     setClickedButton(buttonClickedValue);
     // The list of tasks being displayed should be filtered, so that only tasks that match the category that was clicked are displayed.
