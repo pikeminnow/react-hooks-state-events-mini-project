@@ -1,8 +1,35 @@
 import { useState } from "react";
 import React from "react";
 
-// Pass the list of categories to this component from App. 
 
+function DisplayCategoryButtons({ displayCategories, clickedButton, handleCategoryButton }) {
+  console.log(displayCategories);
+  let theButtons = (displayCategories.map((category) => {
+    console.log({ clickedButton });
+    if (clickedButton === category) {
+      return (<button
+        key={category}
+        name={category}
+        className="selected"
+        onClick={(categoryButtonEvent) => handleCategoryButton(categoryButtonEvent)}
+      >{category}</button>);
+    }
+    else {
+      return (
+        <button
+          key={category}
+          name={category}
+          onClick={(categoryButtonEvent) => handleCategoryButton(categoryButtonEvent)}
+        >{category}</button>
+      );
+    }
+  })
+  );
+  return theButtons;
+}
+
+
+// Pass the list of categories to this component from App. 
 
 function CategoryFilter({ categories }) {
   // When a button is clicked, the following should happen:
@@ -18,8 +45,6 @@ function CategoryFilter({ categories }) {
     console.log(categoryButtonEvent.target.innerText);
     console.log(buttonDeck);
 
-    categoryButtonEvent.target.classList.toggle("selected");
-
     let buttonClickedValue = categoryButtonEvent.target.innerText;
 
     // let buttonsNotClicked = buttonDeck.categories.filter((button, buttonClickedValue) => !button.includes(buttonClickedValue));
@@ -30,35 +55,6 @@ function CategoryFilter({ categories }) {
 
   }
 
-
-
-  function displayCategoryButtons(displayCategories, clickedButtonValue) {
-    console.log(displayCategories);
-    let theButtons = (displayCategories.map((category, clickedButtonValue) => {
-      if (clickedButtonValue === category) {
-        return (<button
-          key={category}
-          name={category}
-          className="selected"
-          onClick={(categoryButtonEvent) => handleCategoryButton(categoryButtonEvent)}
-        >{category}</button>);
-      }
-      else {
-        return (
-          <button
-            key={category}
-            name={category}
-            onClick={(categoryButtonEvent) => handleCategoryButton(categoryButtonEvent)}
-          >{category}</button>
-        );
-      }
-    })
-    );
-    return theButtons;
-  }
-
-  console.log(categories);
-
   return (
     <div className="categories">
       <h5>Category filters</h5>
@@ -66,14 +62,16 @@ function CategoryFilter({ categories }) {
       Then, update this component to display <button> elements for each category. In order to pass the test, the buttons will need a key prop equal to the category.
       */}
       {console.log(buttonDeck)}
-      {displayCategoryButtons(categories, clickedButton)}
-
-
+      <DisplayCategoryButtons
+        displayCategories={categories}
+        clickedButton={clickedButton}
+        handleCategoryButton={handleCategoryButton} />
     </div>
   );
 }
 
 export default CategoryFilter;
 
+// categoryButtonEvent.target.classList.toggle("selected");
 
 
