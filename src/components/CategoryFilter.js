@@ -6,23 +6,16 @@ function DisplayCategoryButtons({ displayCategories, clickedButton, handleCatego
   console.log(displayCategories);
   let theButtons = (displayCategories.map((category) => {
     console.log({ clickedButton });
-    if (clickedButton === category) {
-      return (<button
-        key={category}
-        name={category}
-        className="selected"
-        onClick={(categoryButtonEvent) => handleCategoryButton(categoryButtonEvent)}
-      >{category}</button>);
-    }
-    else {
-      return (
-        <button
-          key={category}
-          name={category}
-          onClick={(categoryButtonEvent) => handleCategoryButton(categoryButtonEvent)}
-        >{category}</button>
-      );
-    }
+
+    let thisButton = (<button
+      key={category}
+      name={category}
+      className={(category === clickedButton) ? "selected" : ""}
+      onClick={(categoryButtonEvent) => handleCategoryButton(categoryButtonEvent)}
+    >{category}</button>);
+    console.log(thisButton);
+
+    return thisButton;
   })
   );
   return theButtons;
@@ -72,7 +65,5 @@ function CategoryFilter({ categories }) {
 }
 
 export default CategoryFilter;
-
-// categoryButtonEvent.target.classList.toggle("selected");
 
 
