@@ -2,11 +2,12 @@ import { useState } from "react";
 import React from "react";
 
 
-function DisplayCategoryButtons({ displayCategories, clickedButton, handleCategoryButton }) {
-  console.log(displayCategories);
-  let theButtons = (displayCategories.map((category) => {
-    console.log({ clickedButton });
 
+
+
+function DisplayCategoryButtons({ displayCategories, clickedButton, handleCategoryButton }) {
+
+  let theButtons = (displayCategories.map((category) => {
     let thisButton = (<button
       key={category}
       name={category}
@@ -19,6 +20,18 @@ function DisplayCategoryButtons({ displayCategories, clickedButton, handleCatego
   })
   );
   return theButtons;
+}
+
+function DisplayCategoryButton({ category, handleCategoryButton, extraProps }) {
+  console.log(handleCategoryButton)
+  let thisButton = (<button key={category}
+    name={category}
+    onClick={(categoryButtonEvent) => handleCategoryButton(categoryButtonEvent)}
+    {...extraProps}
+  > {category}
+  </button>)
+  return thisButton;
+
 }
 
 
@@ -55,10 +68,23 @@ function CategoryFilter({ categories }) {
       Then, update this component to display <button> elements for each category. In order to pass the test, the buttons will need a key prop equal to the category.
       */}
       {console.log(buttonDeck)}
-      <DisplayCategoryButtons
+      {/* <DisplayCategoryButtons
         displayCategories={categories}
         clickedButton={clickedButton}
-        handleCategoryButton={handleCategoryButton} />
+        handleCategoryButton={handleCategoryButton} /> */}
+
+      {categories.map(category => {
+        const extraProps = clickedButton === category
+          ? { className: "selected" }
+          : {}
+        return <DisplayCategoryButton
+          category={category}
+          handleCategoryButton={handleCategoryButton}
+          extraProps={extraProps}
+        >
+          {category}
+        </DisplayCategoryButton>
+      })}
     </div>
   );
 }
